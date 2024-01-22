@@ -8,7 +8,7 @@ def next_event():
     next_event = fastf1.get_events_remaining()
 
     if not next_event.empty:
-        return next_event.to_json()
+        return next_event.iloc[0].to_json()
     else:
         currentYear = datetime.datetime.now().year
         date_var = datetime.datetime(currentYear + 1, 1, 1)

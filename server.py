@@ -1,8 +1,9 @@
 import importlib
 from flask import Flask, Blueprint
-
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 module = importlib.import_module("routes.blueprints")
 for name, blueprint in module.__dict__.items():
