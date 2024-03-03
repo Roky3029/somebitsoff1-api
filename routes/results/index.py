@@ -4,18 +4,15 @@ import datetime
 
 
 @results.route("/results/<round>")
-def next_event(round):
+def round(round):
     try:
         year = datetime.datetime.now().year
         session = fastf1.get_session(int(year), int(round), "R")
         session.load()
 
-        print(session.results)
-
         return session.results.to_json()
-    except fastf1.core.DataNotLoadedError:
+    except:
         year = datetime.datetime.now().year
-        event = fastf1.get_event(year, round).to_json()
+        event = fastf1.get_event(int(year), int(round)).to_json()
 
         return event
-
