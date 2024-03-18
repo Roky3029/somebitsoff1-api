@@ -5,14 +5,16 @@ import datetime
 
 @results.route("/results/<round>")
 def round(round):
-    try:
-        year = datetime.datetime.now().year
-        session = fastf1.get_session(int(year), int(round), "R")
-        session.load()
+    # try:
+    year = datetime.datetime.now().year
+    session = fastf1.get_session(int(year), int(round), "R")
+    session.load()
 
-        return session.results.to_json()
-    except:
-        year = datetime.datetime.now().year
-        event = fastf1.get_event(int(year), int(round)).to_json()
+    return session.results.to_json()
 
-        return event
+
+# except:
+#     year = datetime.datetime.now().year
+#     event = fastf1.get_event(int(year), int(round)).to_json()
+
+#     return event
